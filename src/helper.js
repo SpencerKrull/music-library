@@ -6,7 +6,7 @@ const fetchSearch = async (searchTerm) => {
     return resData.results
 }
 
-const wrapPromise = async (promise) => {
+const wrapPromise = (promise) => {
     let status = 'pending'
     let result = ''
     let suspender = promise.then(response => {
@@ -18,7 +18,7 @@ const wrapPromise = async (promise) => {
     })
     return {
         read() {
-            if(status === 'pending') {
+            if (status === 'pending') {
                 throw suspender
             } else if (status === 'error') {
                 throw result
