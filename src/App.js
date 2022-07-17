@@ -4,6 +4,8 @@ import Gallery from './Components/Gallery'
 import SearchBar from './Components/SearchBar'
 import AlbumView from './Components/AlbumView'
 import ArtistView from './Components/ArtistView'
+import { DataContext } from './context/DataContext'
+import { SearchContext } from './context/SearchContext'
 
 function App() {
 	let [search, setSearch] = useState('')
@@ -51,6 +53,18 @@ function App() {
 			</Router>
 		</div>
   	);
+
+  return (
+    <div className="App">
+      <SearchContext.Provider value={{term: searchInput, handleSearch: handleSearch}}>
+        <SearchBar />
+      </SearchContext.Provider>
+      {message}
+      <DataContext.Provider value={data}>
+        <Gallery />
+      </DataContext.Provider>
+    </div>
+  );
 }
 
 export default App;
