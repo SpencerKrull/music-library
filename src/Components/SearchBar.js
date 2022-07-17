@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { SearchContext } from '../context/SearchContext'
+import { SearchContext } from '../Context/SearchContext'
 
 const SearchBar = () => {
     const {term, handleSearch} = useContext(SearchContext)
